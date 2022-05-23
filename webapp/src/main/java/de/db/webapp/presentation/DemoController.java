@@ -3,7 +3,6 @@ package de.db.webapp.presentation;
 
 import de.db.webapp.presentation.dtos.PersonDto;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import org.hibernate.event.internal.DefaultPersistOnFlushEventListener;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +22,8 @@ public class DemoController {
     public String gruss() {
         return "Hallo Spring";
     }
+
+
     @ApiResponse(responseCode = "200", description = "Person wurde gefunden")
     @ApiResponse(responseCode = "404", description = "Person wurde nicht gefunden")
     @ApiResponse(responseCode = "400", description = "Falsches Format")
