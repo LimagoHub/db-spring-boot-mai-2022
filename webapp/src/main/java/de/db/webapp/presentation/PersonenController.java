@@ -3,18 +3,24 @@ package de.db.webapp.presentation;
 
 import de.db.webapp.presentation.dtos.PersonDto;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
+import javax.validation.Validator;
 import java.util.List;
 import java.util.UUID;
+
+
 
 @RestController
 @RequestMapping("/v1/personen")
 public class PersonenController {
+
 
 
 
@@ -104,7 +110,7 @@ public class PersonenController {
     }
 
     @PutMapping(path="", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> saveOrUpdatePerson(@RequestBody PersonDto person){
+    public ResponseEntity<Void> saveOrUpdatePerson(@RequestBody  @Valid PersonDto person){
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -114,5 +120,6 @@ public class PersonenController {
         final var uri = builder.path("/v1/personen/{id}").buildAndExpand(person.getId());
         return ResponseEntity.created(uri.toUri()).build();
     }
+
 
 }
