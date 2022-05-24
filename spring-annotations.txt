@@ -1,4 +1,4 @@
-@Component -> @Controller -> Restcontroller, @Service, @Repository
+@Component -> @Controller -> RestController, @Service, @Repository
 @Scope -> @RequestScope, @SessionScope (auch andere)
 @Autowired
 (Alternativen @Component->@Named @Autowired->@Inject)
