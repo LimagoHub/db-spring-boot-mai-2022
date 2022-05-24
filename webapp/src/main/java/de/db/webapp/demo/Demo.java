@@ -44,7 +44,7 @@ public class Demo {
 //        System.out.println(translator.translate("init von Demo" + name)  );
 
         PersonEntity john = PersonEntity.builder().id(UUID.randomUUID().toString()).vorname("John").nachname("Doe").build();
-
+        repository.persist(john);
         repository.save(john);
 
 

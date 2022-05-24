@@ -3,9 +3,10 @@ package de.db.webapp.persistence.entities;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
-
 
 @Getter
 @Setter
@@ -15,26 +16,22 @@ import java.util.Objects;
 @Builder
 
 @Entity
-@Table(name="tbl_personen")
-
-@NamedQuery(name = "PersonEntity.jane", query = "select p from PersonEntity p")
-public class PersonEntity {
+public class SchweinEntity {
 
     @Id
+
     @Column(length = 36, nullable = false)
     private String id;
-
     @Column(length = 30, nullable = false)
-    private String vorname;
-
-    @Column(length = 30, nullable = false)
-    private String nachname;
+    private String name;
+    @Column( nullable = false)
+    private int gewicht;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        PersonEntity that = (PersonEntity) o;
+        SchweinEntity that = (SchweinEntity) o;
         return id != null && Objects.equals(id, that.id);
     }
 
