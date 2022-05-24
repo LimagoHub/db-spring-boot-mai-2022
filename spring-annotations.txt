@@ -1,0 +1,17 @@
+@Component -> @Controller -> Restcontroller, @Service, @Repository
+@Scope -> @RequestScope, @SessionScope (auch andere)
+@Autowired
+(Alternativen @Component->@Named @Autowired->@Inject)
+@PostConstruct
+@PreDestroy (Achtung! Funktioniert nur, wenn Objekt unter der Verwaltung von Spring steht)
+@Lazy (nur bei Singleton sinnvoll)
+@Qualify, @Profile @Primary
+@ControllerAdvice (Fehlerbehandlung)
+@RequestMapping("xxx")
+
+@(Get|Post|Delete|Put)Mapping(path = "") ggf. consumes und oder produces
+@PathVariable
+@RequestParam(required = false, defaultValue = "")
+@RequestBody
+@Valid
+
