@@ -153,4 +153,17 @@ class PersonenControllerTest {
 
     }
 
+    @Test
+    void test9() throws Exception{
+        final String uuid = UUID.randomUUID().toString();
+
+        when(serviceMock.loeschen(anyString())).thenReturn(true);
+        ResponseEntity<Void> result =restTemplate.exchange("/v1/personen/" + uuid, HttpMethod.DELETE,null,Void.class);
+
+
+        assertEquals(HttpStatus.OK, result.getStatusCode());
+        verify(serviceMock,times(1)).loeschen(uuid);
+
+    }
+
 }

@@ -52,15 +52,17 @@ public class PersonenController {
     }
 
     @DeleteMapping(path="/{id}")
-    public ResponseEntity<Void> deletePerson(@PathVariable String id){
-        return ResponseEntity.notFound().build();
-    }
-    @DeleteMapping(path="", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> deletePerson(@RequestBody PersonDto person) throws PersonenServiceException{
-        if(service.loeschen(mapper.convert(person)))
+    public ResponseEntity<Void> deletePerson(@PathVariable String id) throws PersonenServiceException{
+        if(service.loeschen(id))
             return ResponseEntity.ok().build();
         else
             return ResponseEntity.notFound().build();
+    }
+
+
+    @DeleteMapping(path="", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> deletePerson(@RequestBody PersonDto person) throws PersonenServiceException{
+        return deletePerson(person.getId());
     }
 
     @PutMapping(path="", consumes = MediaType.APPLICATION_JSON_VALUE)

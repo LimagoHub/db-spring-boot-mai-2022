@@ -9,6 +9,8 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -20,6 +22,7 @@ import java.util.UUID;
 //@Named
 //@Lazy
 @Scope(BeanDefinition.SCOPE_SINGLETON)
+@Transactional(propagation = Propagation.REQUIRED)
 public class Demo {
 
     @Value("${Demo.message}")
@@ -50,10 +53,16 @@ public class Demo {
 //        System.out.println(rowCount);
 //        System.out.println(translator.translate("init von Demo" + name)  );
 
-        PersonEntity john = PersonEntity.builder().id(UUID.randomUUID().toString()).vorname("John").nachname("Doe").build();
-        repository.persist(john);
-        repository.save(john);
 
 
+
+
+    }
+
+    public void run() {
+        PersonEntity john = PersonEntity.builder().id(UUID.randomUUID().toString()).vorname("John").nachname("Demo").build();
+        //repository.persist(john);
+        john = repository.save(john);
+        john.setVorname("Jane");
     }
 }
