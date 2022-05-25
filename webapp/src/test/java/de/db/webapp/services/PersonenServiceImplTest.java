@@ -8,6 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -21,6 +23,9 @@ class PersonenServiceImplTest {
 
     @Mock
     private PersonMapper mapperMock;
+
+    @Mock
+    private List<String> antipathenMock;
 
     @Test
     void speicher_parameterNull_throwsPersonenServiceException() throws Exception {
