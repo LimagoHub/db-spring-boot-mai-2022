@@ -1,17 +1,35 @@
 @Component -> @Controller -> RestController, @Service, @Repository
 @Scope -> @RequestScope, @SessionScope (auch andere)
-@Autowired
+@Autowired + @Value "${el.ausdruck}" spring expression language
 (Alternativen @Component->@Named @Autowired->@Inject)
 @PostConstruct
 @PreDestroy (Achtung! Funktioniert nur, wenn Objekt unter der Verwaltung von Spring steht)
 @Lazy (nur bei Singleton sinnvoll)
 @Qualify, @Profile @Primary
 @ControllerAdvice (Fehlerbehandlung)
-@RequestMapping("xxx")
+@RequestMapping("basepath")
 
 @(Get|Post|Delete|Put)Mapping(path = "") ggf. consumes und oder produces
-@PathVariable
+@PathVariable										
 @RequestParam(required = false, defaultValue = "")
 @RequestBody
 @Valid
+
+@NotNull
+@Size
+
+JPA:
+@Entity + @Id
+@Column (eigenschaften der Spalte, bis auf "name" wirken einstellungen nur beim Erstellen)
+@Table 
+
+@Transactional
+
+Config @Configuration + @ Bean
+
+@ExceptionHandler
+
+
+
+
 

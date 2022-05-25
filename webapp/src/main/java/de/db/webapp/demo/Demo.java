@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -29,6 +30,10 @@ public class Demo {
     @Autowired
     private PersonenRepository repository;
 
+    @Autowired
+    @Qualifier("stadtLandFluss")
+    private List<String> slf;
+
     //@Autowired
     public Demo(/* @Qualifier("upper")*/   final Translator translator) {
         this.translator = translator;
@@ -38,6 +43,8 @@ public class Demo {
     @PostConstruct
     public void init() {
 
+
+        System.out.println(slf);
 //        long rowCount
 //                = repository.count();
 //        System.out.println(rowCount);
