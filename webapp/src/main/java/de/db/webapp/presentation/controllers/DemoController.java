@@ -1,6 +1,7 @@
-package de.db.webapp.presentation;
+package de.db.webapp.presentation.controllers;
 
 
+import de.db.webapp.Max;
 import de.db.webapp.presentation.dtos.PersonDto;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.MediaType;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/demo")
+@Max
 public class DemoController {
 
     @ApiResponse(responseCode = "200", description = "Person wurde gefunden")

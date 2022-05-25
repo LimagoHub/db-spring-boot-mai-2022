@@ -1,7 +1,7 @@
 package de.db.webapp.services;
 
-import de.db.webapp.persistence.PersonenRepository;
-import de.db.webapp.services.mapper.PersonMapper;
+import de.db.webapp.persistence.PersonenRepositoryRaw;
+import de.db.webapp.repositories.mapper.PersonMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,7 +19,7 @@ class PersonenServiceImplTest {
     private PersonenServiceImpl objectUnderTest;
 
     @Mock
-    private PersonenRepository repoMock;
+    private PersonenRepositoryRaw repoMock;
 
     @Mock
     private PersonMapper mapperMock;

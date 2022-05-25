@@ -1,11 +1,7 @@
 package de.db.webapp.services;
 
-import de.db.webapp.persistence.PersonenRepository;
 import de.db.webapp.persistence.SchweineRepository;
-import de.db.webapp.persistence.entities.SchweinEntity;
-import de.db.webapp.services.mapper.PersonMapper;
-import de.db.webapp.services.mapper.SchweinMapper;
-import de.db.webapp.services.model.Person;
+import de.db.webapp.repositories.mapper.SchweinMapper;
 import de.db.webapp.services.model.Schwein;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

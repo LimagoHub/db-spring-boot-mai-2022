@@ -1,4 +1,4 @@
-package de.db.webapp.presentation;
+package de.db.webapp.presentation.mapper;
 
 
 import de.db.webapp.presentation.dtos.PersonDto;

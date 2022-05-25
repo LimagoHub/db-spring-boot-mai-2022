@@ -1,24 +1,19 @@
 package de.db.webapp.services;
 
-import de.db.webapp.persistence.PersonenRepository;
-import de.db.webapp.services.mapper.PersonMapper;
+import de.db.webapp.repositories.PersonenRepository;
 import de.db.webapp.services.model.Person;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-//@Service
-@Transactional(propagation = Propagation.REQUIRED, rollbackFor = PersonenServiceException.class, isolation = Isolation.READ_COMMITTED)
+
+
 @AllArgsConstructor
 public class PersonenServiceImpl implements PersonenService {
 
     private final PersonenRepository repo;
-    private final PersonMapper mapper;
+
     private final List<String> antipathen;
 
     @Override
@@ -40,7 +35,7 @@ public class PersonenServiceImpl implements PersonenService {
 
         retval = repo.existsById(person.getId());
 
-        repo.save(mapper.convert(person));
+        repo.save(person);
         return retval;
     }
 
@@ -87,7 +82,7 @@ public class PersonenServiceImpl implements PersonenService {
     @Override
     public Optional<Person> findeNachId(String id) throws PersonenServiceException {
         try {
-            return repo.findById(id).map(mapper::convert);
+            return repo.findById(id);
         } catch (RuntimeException e) {
             throw new PersonenServiceException("Upps", e);
         }
@@ -96,7 +91,7 @@ public class PersonenServiceImpl implements PersonenService {
     @Override
     public Iterable<Person> findeAll() throws PersonenServiceException {
         try {
-            return mapper.convert(repo.findAll());
+            return repo.findAll();
         } catch (RuntimeException e) {
             throw new PersonenServiceException("Upps", e);
         }

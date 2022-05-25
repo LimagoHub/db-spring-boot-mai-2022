@@ -1,7 +1,8 @@
-package de.db.webapp.presentation;
+package de.db.webapp.presentation.controllers;
 
 
 import de.db.webapp.presentation.dtos.PersonDto;
+import de.db.webapp.presentation.mapper.PersonDtoMapper;
 import de.db.webapp.services.PersonenService;
 import de.db.webapp.services.PersonenServiceException;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -14,11 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 
-
 @RestController
 @RequestMapping("/v1/personen")
 @AllArgsConstructor
-public class PersonenController {
+public class PersonenQueryController {
 
    private final PersonenService service;
    private final PersonDtoMapper mapper;
@@ -51,36 +51,7 @@ public class PersonenController {
 
     }
 
-    @DeleteMapping(path="/{id}")
-    public ResponseEntity<Void> deletePerson(@PathVariable String id) throws PersonenServiceException{
-        if(service.loeschen(id))
-            return ResponseEntity.ok().build();
-        else
-            return ResponseEntity.notFound().build();
-    }
 
-
-    @DeleteMapping(path="", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> deletePerson(@RequestBody PersonDto person) throws PersonenServiceException{
-        return deletePerson(person.getId());
-    }
-
-    @PutMapping(path="", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> saveOrUpdatePerson(@RequestBody  @Valid PersonDto person) throws PersonenServiceException {
-
-        if(service.speichern(mapper.convert(person))){
-            return ResponseEntity.ok().build();
-        }
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
-
-//    @PostMapping(path="", consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<Void> saveOrUpdatePersonNotIdempotent(@RequestBody PersonDto person, final UriComponentsBuilder builder){
-//        person.setId(UUID.randomUUID().toString());
-//        final var uri = builder.path("/v1/personen/{id}").buildAndExpand(person.getId());
-//        return ResponseEntity.created(uri.toUri()).build();
-//    }
 
 
 }

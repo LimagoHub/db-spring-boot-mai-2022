@@ -1,6 +1,7 @@
-package de.db.webapp.presentation;
+package de.db.webapp.presentation.controllers;
 
 
+import de.db.webapp.presentation.mapper.SchweinDtoMapper;
 import de.db.webapp.presentation.dtos.SchweinDto;
 import de.db.webapp.services.SchweineServiceException;
 import de.db.webapp.services.SchweineService;

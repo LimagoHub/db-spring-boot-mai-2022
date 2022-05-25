@@ -1,11 +1,9 @@
-package de.db.webapp.services.config;
+package de.db.webapp.ports.config;
 
 
-import de.db.webapp.persistence.PersonenRepository;
-import de.db.webapp.presentation.PersonDtoMapper;
+import de.db.webapp.repositories.PersonenRepository;
 import de.db.webapp.services.PersonenService;
 import de.db.webapp.services.PersonenServiceImpl;
-import de.db.webapp.services.mapper.PersonMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,7 +30,7 @@ public class PersonenConfig {
 
 
     @Bean
-    public PersonenService getPersonenService(PersonenRepository repo, PersonMapper mapper,@Qualifier("antipathen") List<String> antipathen) {
-        return new PersonenServiceImpl(repo, mapper, antipathen);
+    public PersonenService getPersonenService(PersonenRepository repo, @Qualifier("antipathen") List<String> antipathen) {
+        return new PersonenServiceImpl(repo,  antipathen);
     }
 }

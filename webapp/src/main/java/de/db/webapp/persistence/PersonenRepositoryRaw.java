@@ -5,7 +5,7 @@ import de.db.webapp.persistence.entities.TinyPerson;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-public interface PersonenRepository extends CrudRepository<PersonEntity, String> , PersonenCustomRepository{
+public interface PersonenRepositoryRaw extends CrudRepository<PersonEntity, String> , PersonenCustomRepository{
 
     Iterable<PersonEntity> findByVorname(String vorname);
 

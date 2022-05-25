@@ -20,16 +20,20 @@ public class LoggerAspect {
     public void logAdvice(JoinPoint joinPoint) {
         log.warn("Hallo Aspect " + joinPoint.getSignature().getName() + " wurde aufgerufen");
     }
-    @AfterReturning(value = "execution(public * de.db.webapp.presentation.PersonenController.*(..))",returning = "result")
+    @AfterReturning(value = "execution(public * de.db.webapp.presentation.controllers.PersonenCommandController.*(..))",returning = "result")
     public void afterReturning(JoinPoint joinPoint, Object result) {
         log.warn(result.toString());
     }
-    @AfterThrowing(value = "execution(public * de.db.webapp.presentation.PersonenController.*(..))",throwing = "ex")
+    @AfterThrowing(value = "execution(public * de.db.webapp.presentation.controllers.PersonenCommandController.*(..))",throwing = "ex")
     public void afterThrowing(JoinPoint joinPoint, Throwable ex) {
         log.error("Fehler {} ist aufgetreten", ex);
     }
 
-    @Around("execution(public * de.db.webapp.presentation.PersonenController.*(..))")
+
+    // After Advice  nur für füttern am schweineService -> id in Konsole schreiben
+
+
+    @Around("execution(public * de.db.webapp.presentation.controllers.PersonenCommandController.*(..))")
     public Object benchmark(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
 
         var start = Instant.now();

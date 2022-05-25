@@ -1,4 +1,4 @@
-package de.db.webapp.services.mapper;
+package de.db.webapp.repositories.mapper;
 
 import de.db.webapp.persistence.entities.PersonEntity;
 import de.db.webapp.persistence.entities.SchweinEntity;
